@@ -33,7 +33,7 @@ const productos = [
     },
     {
         id: "juego-06",
-        titulo: "COD: Modern Warfare III",
+        titulo: "COD: Warfare III",
         precio: 1500,
         img: "./img/07.jpg",
     }
@@ -110,14 +110,14 @@ function actualizarCarrito() {
                 <p>${producto.cantidad}</p>
                 <p>$${producto.cantidad * producto.precio}</p>
             `;
-
+            
             let button = document.createElement("button");
             button.classList.add("carrito-producto-btn");
             button.innerText = "❌";
             button.addEventListener("click", () => {
                 borrarDelCarrito(producto);
-            })
-
+                })
+            
             div.append(button);
             carritoProductos.append(div);
         })
@@ -156,7 +156,7 @@ vaciarCarrito.addEventListener("click", () => {
             text: 'custom-text',
             icon: 'custom-icon',
         },
-        background: '#f2ebd9',
+        background: 'white',
     }).then((result) => {
         if (result.isConfirmed) {
             carrito.length = 0;
@@ -171,7 +171,7 @@ vaciarCarrito.addEventListener("click", () => {
                     title: 'custom-title',
                     icon: 'custom-success-icon',
                 },
-                background: '#f2ebd9',
+                background: 'white',
             });
         }
     })

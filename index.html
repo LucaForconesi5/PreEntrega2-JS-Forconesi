@@ -3,18 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game List - Pre Entrega 3</title>
+    <title>GameStore - Pre Entrega 3</title>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
+
 
     <link rel="icon" type="image/jpg" href="./img/fav.jpg"/>
 </head>
 <body>
 
     <header class="header">
-        <div class="container">
-            <h1>Game List</h1>
+        <div class="icono-h1">
+           <img src="./img/fav.jpg" class="icono-header">
+           <h1>GameStore</h1>
         </div>
+        <nav class="nav">
+            
+            <ul>
+                <li>
+                    <button class="boton-seccion">Home</button>
+                </li>
+                <li>
+                    <button class="boton-seccion">Contacto</button>
+                </li>
+                <li>
+                    <button class="boton-seccion">Carrito 🛒</button>
+                </li>
+            </ul>
+        </nav>
+
     </header>
     <main class="main">
         <section class="container">
@@ -26,22 +44,43 @@
         <section class="container">
             <h2 class="titulo">Carrito</h2>
             <div class="carrito">
+
+                <div class="container-etiquetas">
+                    <span class="carrito-etiqueta">Producto</span>
+                    <span class="carrito-etiqueta">$</span>
+                    <span class="carrito-etiqueta">Cantidad</span>
+                    <span class="carrito-etiqueta">Subtotal</span>
+                </div>
+                
                 <div id="carrito-vacio" class="">
                     <h4>Tu carrito está vacío. <strong>Agregá un juego para ver el resumen.</strong></h4>
                 </div>
                 <div class="carrito-productos d-none" id="carrito-productos">
                     
                 </div>
-                <button class="d-none" id="vaciar-carrito">Vaciar carrito</button>
-                <div class="carrito-total">
-                    <h2>🛒 Total: <span id="carrito-total">$0</span></h2>
+                    <div class="container-total">
+                        <button class="d-none" id="vaciar-carrito">Vaciar carrito</button>
+                        <div class="carrito-total">
+                            <h2>🛒 Total: <span id="carrito-total">$0</span></h2>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
     <footer class="footer">
         <div class="container">
-            
+            <div class="footer-content">
+                <div class="footer-social">
+                    <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="bi bi-youtube"></i></a>
+                </div>
+                <div class="footer-info">
+                    <p>&copy; 2024 GameStore. Todos los derechos reservados.</p>
+                    <p><a href="#">Política de privacidad</a> | <a href="#">Términos de servicio</a></p>
+                </div>
+            </div>
         </div>
     </footer>
     
