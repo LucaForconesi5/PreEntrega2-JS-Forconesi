@@ -1,4 +1,4 @@
-const carrito = [];
+const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
 const productos = [
     {
@@ -20,19 +20,19 @@ const productos = [
         img: "./img/04.jpg",
     },
     {
-        id: "juego-03",
+        id: "juego-04",
         titulo: "COD: Black Ops II",
         precio: 4350,
         img: "./img/05.jpg",
     },
     {
-        id: "juego-03",
+        id: "juego-05",
         titulo: "COD: Black Ops III",
         precio: 6000,
         img: "./img/06.jpg",
     },
     {
-        id: "juego-03",
+        id: "juego-06",
         titulo: "COD: Modern Warfare III",
         precio: 1500,
         img: "./img/07.jpg",
@@ -43,6 +43,7 @@ const contenedorProductos = document.querySelector("#productos");
 const carritoVacio = document.querySelector("#carrito-vacio");
 const carritoProductos = document.querySelector("#carrito-productos");
 const carritoTotal = document.querySelector("#carrito-total");
+const vaciarCarrito = document.querySelector("#vaciar-carrito");
 
 productos.forEach((producto) => {
 
@@ -52,6 +53,7 @@ productos.forEach((producto) => {
         <img class="producto-img" src="${producto.img}" alt="">
         <h3>${producto.titulo}</h3>
         <p>$${producto.precio}</p>
+        
     `;
 
     let button = document.createElement("button");
@@ -66,17 +68,37 @@ productos.forEach((producto) => {
 });
 
 const agregarAlCarrito = (producto) => {
-    carrito.push(producto);
+    let productoEnCarrito = carrito.find((item) => item.id === producto.id);
+
+    if (productoEnCarrito) {
+        productoEnCarrito.cantidad++;
+    } else {
+        carrito.push({...producto, cantidad: 1});
+    }
+    
+
     actualizarCarrito();
+
+    Toastify({
+        text: producto.titulo + " agregado",
+        duration: 1500,
+        close: true,
+        style: {
+          background: "#df1717",
+          color: "#f2ebd9",
+        },
+      }).showToast();
 }
 
 function actualizarCarrito() {
     if (carrito.length === 0) {
         carritoVacio.classList.remove("d-none");
         carritoProductos.classList.add("d-none");
+        vaciarCarrito.classList.add("d-none");
     } else {
         carritoVacio.classList.add("d-none");
         carritoProductos.classList.remove("d-none");
+        vaciarCarrito.classList.remove("d-none");
 
         carritoProductos.innerHTML = "";
         carrito.forEach((producto) => {
@@ -85,6 +107,8 @@ function actualizarCarrito() {
             div.innerHTML = `
                 <h3>${producto.titulo}</h3>
                 <p>$${producto.precio}</p>
+                <p>$${producto.cantidad}</p>
+                <p>$${producto.cantidad * producto.precio}</p>
             `;
 
             let button = document.createElement("button");
@@ -99,7 +123,10 @@ function actualizarCarrito() {
         })
     }
     actualizarTotal();
+    
+    localStorage.setItem("carrito", JSON.stringify(carrito));
 }
+actualizarCarrito();
 
 function borrarDelCarrito(producto) {
     const indice = carrito.findIndex((item) => item.id === producto.id);
@@ -108,6 +135,28 @@ function borrarDelCarrito(producto) {
 }
 
 function actualizarTotal() {
-    const total = carrito.reduce((acc, prod) => acc + prod.precio, 0);
+    const total = carrito.reduce((acc, prod) => acc + (prod.precio * prod.cantidad), 0);
     carritoTotal.innerText = "$" + total;
 }
+
+vaciarCarrito.addEventListener("click", () => {
+    Swal.fire({
+        title: "¿Seguro querés vaciar el carrito?",
+        text: "Se van a borrar todos tus productos.",
+        icon: "question",
+        showDenyButton: true,
+        denyButtonText: "No",
+        confirmButtonText: "Si",
+    }).then((result) => {
+        if (result.isConfirmed) {
+            carrito.length = 0;
+            actualizarCarrito();
+            Swal.fire({
+                icon: "success",
+                title: "Carrito vaciado",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+    })
+})
