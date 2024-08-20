@@ -129,10 +129,85 @@ h1, h2, h3, h4, h5, h6 {
 
 .d-none {
     display: none;
+} 
+
+
+/* Swal.fire modificaciones */
+
+.custom-popup {
+        border-radius: 10px;
+        border: 2px solid #df1717;
+        box-shadow: 20px;
+    }
+
+div:where(.swal2-icon).swal2-question {
+     border-color: #df1717 !important;
+     color: #87adbd;
 }
+
+.custom-title {
+        color: #df1717;
+        font-family: 'Arial', sans-serif;
+        font-weight: bold;
+    }
+
+.custom-text {
+    color: #333;
+    font-family: 'Arial', sans-serif;
+    }
+.custom-confirm-button {
+    background-color: #df1717 !important;
+    color: #f2ebd9 !important;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    }
+.custom-confirm-button:hover {
+    background-color: #b71414 !important; 
+    }
+.custom-deny-button {
+    background-color: #f2ebd9 !important;
+    color: #df1717 !important;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    }
+.custom-deny-button:hover {
+    background-color: #e5e2df !important; 
+    };
+
+    .swal2-icon.swal2-question {
+        border-color: #df1717 !important; 
+        color: #df1717 !important; 
+    }
+    .swal2-icon.swal2-question::before {
+        background-color: #f2ebd9 !important; 
+        color: #df1717 !important; 
+    }
+    .custom-icon .swal2-icon-content {
+        color: #df1717 !important;} 
+
+        .swal2-icon.swal2-success {
+            border-color: #df1717 !important; /* Cambia el color del borde del ícono de éxito */
+            background-color: #df1717 !important; /* Cambia el fondo del círculo del ícono de éxito */
+        }
+        
+        .swal2-icon.swal2-success [class^="swal2-success-line"] {
+            background-color: #df1717 !important; /* Cambia el color del checkmark al color claro de la paleta */
+        }
+        
+        .swal2-icon.swal2-success .swal2-success-ring {
+            border-color: #df1717 !important; /* Cambia el color del anillo alrededor del checkmark */
+        }
+
+
+/* Final de las "Swal.fire" modificaciones */
 
 .footer {
     background-color: var(--clr-black);
     color: var(--clr-white);
     padding-block: 2rem;
 }
+

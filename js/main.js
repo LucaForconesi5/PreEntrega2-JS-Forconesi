@@ -107,7 +107,7 @@ function actualizarCarrito() {
             div.innerHTML = `
                 <h3>${producto.titulo}</h3>
                 <p>$${producto.precio}</p>
-                <p>$${producto.cantidad}</p>
+                <p>${producto.cantidad}</p>
                 <p>$${producto.cantidad * producto.precio}</p>
             `;
 
@@ -147,6 +147,16 @@ vaciarCarrito.addEventListener("click", () => {
         showDenyButton: true,
         denyButtonText: "No",
         confirmButtonText: "Si",
+        customClass: {
+            confirmButton: 'custom-button',
+            confirmButton: 'custom-confirm-button',
+            denyButton: 'custom-deny-button',
+            popup: 'custom-popup',
+            title: 'custom-title',
+            text: 'custom-text',
+            icon: 'custom-icon',
+        },
+        background: '#f2ebd9',
     }).then((result) => {
         if (result.isConfirmed) {
             carrito.length = 0;
@@ -155,7 +165,13 @@ vaciarCarrito.addEventListener("click", () => {
                 icon: "success",
                 title: "Carrito vaciado",
                 showConfirmButton: false,
-                timer: 1500
+                timer: 1500,
+                customClass: {
+                    popup: 'custom-popup',
+                    title: 'custom-title',
+                    icon: 'custom-success-icon',
+                },
+                background: '#f2ebd9',
             });
         }
     })
