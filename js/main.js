@@ -5,7 +5,7 @@ const carritoProductos = document.querySelector("#carrito-productos");
 const carritoTotal = document.querySelector("#carrito-total");
 const vaciarCarrito = document.querySelector("#vaciar-carrito");
 
-//? Fetch
+//? Fetch.
 
 fetch("../data/productos.json")
     .then((resp) => resp.json())
