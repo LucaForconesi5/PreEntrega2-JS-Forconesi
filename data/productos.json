@@ -1,0 +1,8 @@
+[
+    { "id": "juego-01", "titulo": "Uncharted 2", "precio": 2300, "img": "./img/01.jpg"},
+    { "id": "juego-02", "titulo": "Uncharted 3", "precio": 3200, "img": "./img/02.jpg"},
+    { "id": "juego-03", "titulo": "COD: Black Ops I", "precio": 952, "img": "./img/04.jpg"},
+    { "id": "juego-04", "titulo": "COD: Black Ops II", "precio": 4350, "img": "./img/05.jpg"},
+    { "id": "juego-05", "titulo": "COD: Black Ops III", "precio": 6000, "img": "./img/06.jpg"},
+    { "id": "juego-06", "titulo": "COD: Warfare III", "precio": 1500, "img": "./img/07.jpg"}
+]

@@ -1,52 +1,23 @@
 const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
-const productos = [
-    {
-        id: "juego-01",
-        titulo: "Uncharted 2",
-        precio: 2300,
-        img: "./img/01.jpg",
-    },
-    {
-        id: "juego-02",
-        titulo: "Uncharted 3",
-        precio: 3200,
-        img: "./img/02.jpg",
-    },
-    {
-        id: "juego-03",
-        titulo: "COD: Black Ops I",
-        precio: 952,
-        img: "./img/04.jpg",
-    },
-    {
-        id: "juego-04",
-        titulo: "COD: Black Ops II",
-        precio: 4350,
-        img: "./img/05.jpg",
-    },
-    {
-        id: "juego-05",
-        titulo: "COD: Black Ops III",
-        precio: 6000,
-        img: "./img/06.jpg",
-    },
-    {
-        id: "juego-06",
-        titulo: "COD: Warfare III",
-        precio: 1500,
-        img: "./img/07.jpg",
-    }
-];
-
-const contenedorProductos = document.querySelector("#productos");
 const carritoVacio = document.querySelector("#carrito-vacio");
 const carritoProductos = document.querySelector("#carrito-productos");
 const carritoTotal = document.querySelector("#carrito-total");
 const vaciarCarrito = document.querySelector("#vaciar-carrito");
 
-productos.forEach((producto) => {
+//? Fetch
 
+fetch("../data/productos.json")
+    .then((resp) => resp.json())
+    .then ((data) => {
+        mostrarProductos(data);
+    });
+
+const contenedorProductos = document.querySelector ("#productos");
+
+function mostrarProductos (productos) {
+
+productos.forEach((producto) => {
     let div = document.createElement("div");
     div.classList.add("producto");
     div.innerHTML = `
@@ -66,6 +37,7 @@ productos.forEach((producto) => {
     div.append(button);
     contenedorProductos.append(div);
 });
+}
 
 const agregarAlCarrito = (producto) => {
     let productoEnCarrito = carrito.find((item) => item.id === producto.id);
